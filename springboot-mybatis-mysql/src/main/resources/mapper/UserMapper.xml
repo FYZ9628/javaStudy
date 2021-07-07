@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootmybatismysql.mapper.UserMapper">
+    <resultMap type="com.example.springbootmybatismysql.domain.User" id="userResultMap">
+        <id property="id" column="id"/>
+        <result property="account" column="account" />
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+    </resultMap>
+
+    <insert id="addUser" parameterType="com.example.springbootmybatismysql.domain.User">
+        insert into springboot_demo.user (account,username,password)
+        values (#{account},#{username},#{password})
+    </insert>
+
+    <delete id="deleteById" parameterType="com.example.springbootmybatismysql.domain.User">
+       delete from springboot_demo.user where id=#{id}
+    </delete>
+
+    <update id="updateUser" parameterType="com.example.springbootmybatismysql.domain.User">
+        update springboot_demo.user
+        set username=#{username},password=#{password}
+        where account=#{account}
+    </update>
+
+
+    <select id="getAllUser" resultMap="userResultMap">
+		select * from springboot_demo.user
+		where 2=2
+	</select>
+
+    <select id="findById" resultType="com.example.springbootmybatismysql.domain.User">
+		select * from springboot_demo.user
+		where id=#{id}
+	</select>
+
+    <select id="findByAccount" resultType="com.example.springbootmybatismysql.domain.User">
+		select * from springboot_demo.user
+		where account=#{account}
+	</select>
+
+    <select id="findByAccountAndPassword" resultType="com.example.springbootmybatismysql.domain.User">
+		select * from springboot_demo.user
+		where account=#{account} and password=#{password}
+	</select>
+
+    <select id="findAllByUsernameLike" resultMap="userResultMap">
+		select * from springboot_demo.user
+		where username like concat('%',#{username},'%')
+	</select>
+
+    <select id="findAllByAccountLikeOrUsernameLike" resultMap="userResultMap">
+		select * from springboot_demo.user
+		where account like concat('%',#{keywords},'%') or username like concat('%',#{keywords},'%')
+	</select>
+
+
+</mapper>
