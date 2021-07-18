@@ -9,7 +9,7 @@
 一个非常简单的springboot使用小demo
 
 
-博客链接：
+博客链接：https://blog.csdn.net/weixin_43935051/article/details/118884341
 
 
 # 2、springboot-jpa-mysql
@@ -21,7 +21,7 @@
 数据库：MySQL
 
 
-博客链接：
+博客链接：https://blog.csdn.net/weixin_43935051/article/details/118884745
 
 
 
